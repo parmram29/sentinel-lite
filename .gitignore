@@ -1,0 +1,15 @@
+# venvs
+.venv/
+.venv312/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# logs & artifacts
+logs/
+*.log
+
+# OS/editor
+.DS_Store
+.vscode/

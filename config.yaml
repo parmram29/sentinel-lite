@@ -1,0 +1,57 @@
+cd /Users/mark/sentinel-lite
+
+# Overwrite config.yaml with a clean file
+cat > config.yaml <<'YAML'
+---
+intervals:
+  processes: 5
+  network: 10
+  persistence: 30
+
+log_rotation_bytes: 1048576  # 1 MB
+
+safe_ports:
+  - 22
+  - 53
+  - 80
+  - 123
+  - 143
+  - 389
+  - 443
+  - 465
+  - 587
+  - 993
+  - 995
+
+suspicious_names:
+  - "mimikatz.exe"
+  - "procdump.exe"
+  - "psexec.exe"
+  - "nc.exe"
+  - "netcat"
+  - "powershell_ise.exe"
+
+suspicious_paths:
+  - "/tmp/"
+  - "\\AppData\\Local\\Temp\\"
+  - "/var/tmp/"
+  - "/private/tmp/"
+  - "\\Windows\\Temp\\"
+
+persistence:
+  macos_dirs:
+    - "~/Library/LaunchAgents"
+    - "/Library/LaunchAgents"
+  linux_dirs:
+    - "~/.config/autostart"
+    - "/etc/xdg/autostart"
+  windows_run_keys:
+    - "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"
+    - "HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"
+
+rules:
+  suspicious_process_name: true
+  execution_from_temp: true
+  rare_outbound_port: true
+  new_persistence_entry: true
+YAML
