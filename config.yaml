@@ -1,4 +1,4 @@
-cd /Users/mark/sentinel-lite
+cd ~/sentinel-lite
 
 # Overwrite config.yaml with a clean file
 cat > config.yaml <<'YAML'
